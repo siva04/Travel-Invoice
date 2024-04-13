@@ -1,0 +1,17 @@
+<mat-form-field>
+    <mat-select [formControl]="optionctrl" placeholder="Customer" #singleSelect>
+      <mat-option>
+        <ngx-mat-select-search *ngIf="true" [formControl]="optionFilterCtrl" [preventHomeEndKeyPropagation]="true">
+          <span ngxMatSelectNoEntriesFound>
+            No entries found
+            <button mat-flat-button color="primary" (click)="addNew()">
+              Add <mat-icon>add</mat-icon>
+            </button>
+          </span>
+        </ngx-mat-select-search>
+      </mat-option>
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option[displayName]}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
